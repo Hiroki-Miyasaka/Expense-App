@@ -2,11 +2,23 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
-import db from "./config/db.config.js";
 
+import redisClient from "./service/redis.service.js";
+
+import db from "./config/db.config.js";
 
 dotenv.config();
 const app = express();
+
+(async () => {
+    try{
+        await redisClient.connect();
+    }
+    catch(err){
+        console.log(err);
+    }
+})();
+
 
 app.use(cors());
 app.use(bodyParser.json());
