@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import redisClient from "./service/redis.service.js";
+import authRoutes from "./routes/auth.route.js";
 
 import db from "./config/db.config.js";
 
@@ -31,6 +32,8 @@ app.get("/health", (req, res) => {
         app: "Expense"
     });
 });
+
+app.use("/api/auth", authRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log("Server is running on port" + process.env.PORT + "...");
