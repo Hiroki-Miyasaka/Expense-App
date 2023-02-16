@@ -4,7 +4,10 @@ const userSchema = mongoose.Schema({
     fullName: String,
     email: String,
     password: String,
-    income: Number,
+    income: {
+        type: Number,
+        default: 0
+    },
     transaction: [
         {
         type: mongoose.Schema.Types.ObjectId,
