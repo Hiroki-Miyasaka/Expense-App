@@ -6,9 +6,12 @@ dotenv.config();
 
 const auth = async (req, res, next) => {
 
-    const token = req.header.authorization;
+    const token = req.headers.authorization;
+    // console.log("here are here");
+    // console.log(token);
 
     const redisToken = await redisClient.get(token);
+    
 
     if(!redisToken){
         return res.status(400).json({
@@ -26,7 +29,7 @@ const auth = async (req, res, next) => {
                     message: "Unauthorized!"
                 })
             }
-
+            // console.log(decoded);
             req.user = decoded.id;
             next();
         }catch(err){

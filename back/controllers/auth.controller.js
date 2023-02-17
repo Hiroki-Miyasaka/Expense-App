@@ -28,7 +28,7 @@ export const login = async(req, res) => {
 
         const token = createToken({id: user._id});
  
-        await redisClient.set(token, user._id.toString());
+        await redisClient.set(token.toString(), user._id.toString());
 
         res.header("Authorization", token).status(200).json({
             status: "Success",
@@ -85,7 +85,7 @@ export const logout = async (req, res) => {
     const token = req.headers.authorization;
 
     try{
-        await redisClient.del(token);
+        await redisClient.del(token.toString());
 
         res.status(200).json({
             status: "Success",

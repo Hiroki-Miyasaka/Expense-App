@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    transaction: [
+    transactions: [
         {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Transaction"
