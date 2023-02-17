@@ -27,7 +27,7 @@ export const login = async(req, res) => {
         };
 
         const token = createToken({id: user._id});
-
+ 
         await redisClient.set(token, user._id.toString());
 
         res.header("Authorization", token).status(200).json({
