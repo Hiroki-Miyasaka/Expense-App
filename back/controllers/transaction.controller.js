@@ -43,32 +43,36 @@ export const createTransaction = async (req, res) => {
         const newTransaction = new Transaction(transaction);
         console.log("I'm in 19 line", newTransaction);
 
-        // let createdTransaction = await Transaction.create(newTransaction);
+        let createdTransaction = await Transaction.create(newTransaction);
 
-        await newTransaction.save().then(
-            (res) => {
-                console.log(res);
-                User.findOneAndUpdate(req.user, {
-                    $push: { transactions: res._id }
-                }, {new: true}),
-                (err, updatedUser) => {
-                    if(err) console.log(err);
-                    console.log(updatedUser);
-                    res.status(201).json({
-                        // user,
-                        updatedUser
-                    })
-                }
-            }
-        )
-        console.log("I'm in 34 line", createTransaction);
+        // await newTransaction.save().then(
+        //     (res) => {
+        //         console.log(res);
+        //         User.findOneAndUpdate(req.user, {
+        //             $push: { transactions: res._id }
+        //         }, {new: true}),
+        //         (err, updatedUser) => {
+        //             if(err) console.log(err);
+        //             console.log(updatedUser);
+        //             res.status(201).json({
+        //                 // user,
+        //                 updatedUser
+        //             })
+        //         }
+        //     }
+        // )
+        // console.log("I'm in 34 line", createTransaction);
         
-        // let user = await User.findOneAndUpdate(userId, {
-        //     $push: { transactions: createdTransaction._id }
-        // }, {new: true});
+        let user = await User.findOneAndUpdate(userId, {
+            $push: { transactions: createdTransaction._id }
+        }, {new: true});
 
-        // console.log(user);
+        console.log(user);
 
+        res.status(201).json({
+            // user,
+            createdTransaction
+        })
         
         
     } catch(err){
