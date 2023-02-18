@@ -21,10 +21,10 @@ export const getMe = async (req, res) => {
 
 export const updateInformation = async (req, res) => {
     const id = req.user;
-    console.log("lin24 data", id);
+    // console.log("lin24 data", id);
 
     const data = req.body;
-    console.log("lin27 data", data);
+    // console.log("lin27 data", data);
     
     // if(data.email || data.password){
     //     res.status(400).json({
@@ -36,7 +36,7 @@ export const updateInformation = async (req, res) => {
     try{
         let user = await User.findByIdAndUpdate({_id: id}, data, {new: true});
 
-        
+
         res.status(200).json({
             status: "Success",
             message: "User information updated successfully!",
