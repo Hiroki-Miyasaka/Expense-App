@@ -10,8 +10,8 @@ const userSchema = mongoose.Schema({
     },
     transactions: [
         {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Transaction"
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Transaction"
         }
     ]
 });
