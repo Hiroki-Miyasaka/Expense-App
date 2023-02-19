@@ -3,9 +3,9 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const form = document.getElementById("register-form");
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", (e) => {
 
-    event.preventDefault();
+    e.preventDefault();
 
     if(name.value === "" || email.value === "" || password.value === "") {
         alert("Please provide required information");
