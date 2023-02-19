@@ -20,8 +20,8 @@ form.addEventListener("submit", (e) => {
 
     axios.post("http://localhost:3001/api/auth/register",data)
         .then(response => {
-            window.location.href = "./login.html";
             console.log(response);
+            window.location.href = "./login.html";
         }).catch(err => {
             console.log(err);
         })
