@@ -20,10 +20,10 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="./home.html">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">History</a>
+                    <a class="nav-link" href="./history.html">History</a>
                   </li>
                 </ul>
                 
@@ -48,15 +48,15 @@
                             <input type="text" class="form-control" id="user-name" placeholder="ex. Token Belic">
                         </div>
                         <div class="mb-3">
-                            <label for="user-email" class="form-label">email</label>
+                            <label for="user-email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="user-email" placeholder="ex. email@gmail.com">
                         </div>
                         <div class="mb-3">
-                            <label for="user-password" class="form-label">password</label>
+                            <label for="user-password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="user-password" placeholder="ex. 12345test">
                         </div>
                         <div class="mb-3">
-                            <label for="user-income" class="form-label">income</label>
+                            <label for="user-income" class="form-label">Income</label>
                             <input type="number" class="form-control" id="user-income" placeholder="ex. 5000">
                         </div>
                       </div>
@@ -75,18 +75,18 @@
     
     <main>
         <div class="container ml-5 mt-5">
-            <h1>Your name</h1>
+            <h1 id="userName"></h1>
         </div>
 
         <div class="container px-4 text-center mt-5">
             <div class="row gx-5">
               <div class="col">
-               <div class="p-3"><h2>Your balance</h2></div>
-               <div class="p-3"><h2>0</h2></div>
+               <div class="p-3"><h2>Your Balance</h2></div>
+               <div class="p-3"><h2 id="userBalance"></h2></div>
               </div>
               <div class="col">
-                <div class="p-3"><h2>Cash back</h2></div>
-                <div class="p-3"><h2>0</h2></div>
+                <div class="p-3"><h2>Cash Back</h2></div>
+                <div class="p-3"><h2 id="userCashBack"></h2></div>
               </div>
             </div>
         </div>
@@ -94,17 +94,20 @@
         <div class="container text-center mt-3">
             <div class="row">
               <div class="col border border-2 border-dark">
-                <h3>Income</h3>
-                <h3 class="mt-4">0</h3>
+                <h3 class="pt-3">Income</h3>
+                <h3 id="userIncome" class="mt-4 pb-3"></h3>
               </div>
               <div class="col border border-2 border-dark">
-                <h3>Expense</h3>
-                <h3 class="mt-4">0</h3>
+                <h3 class="pt-3">Expense</h3>
+                <h3 id="userExpense" class="mt-4 pb-3"></h3>
               </div>
             </div>
         </div>
 
         <div class="container mt-5">
+            <div class="container mt-5 mb-5">
+                <h1 class="border-bottom border-dark border-3 pb-3">Add new transaction</h1>
+            </div>
             <form>
                 <div class="mb-3">
                   <label for="transaction-item" class="form-label">Item</label>
@@ -113,12 +116,12 @@
                 <div class="mb-3">
                   <label for="transaction-amount" class="form-label">Amount</label>
                   <input type="number" class="form-control" id="transaction-amount" aria-describedby="amountHelp" placeholder="ex. -300">
-                  <div id="amountHelp" class="form-text">Put minus in front of the number if you spent money</div>
+                  <div id="amountHelp" class="form-text">Add a minus symbol in front of the number to subtract money spent</div>
                 </div>
                 <div class="mb-3">
                     <label for="transaction-cashBackRate" class="form-label">Cash back rate</label>
                     <input type="number" min="0" max="100" class="form-control" id="transaction-cashBackRate" aria-describedby="cashBackRateHelp" placeholder="ex. 2(%)">
-                    <div id="cashBackRateHelp" class="form-text">Percentage notation</div>
+                    <div id="cashBackRateHelp" class="form-text">Percentage</div>
                 </div>
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <button type="submit" class="btn btn-dark mt-3" id="transaction-create-button">Add transaction</button>
