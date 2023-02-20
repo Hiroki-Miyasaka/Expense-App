@@ -6,7 +6,17 @@ let userIncome = document.getElementById("userIncome");
 let userExpense = document.getElementById("userExpense");
 
 // add new transaction
+let transactionItem = document.getElementById("transaction-item");
+let transactionAmount = document.getElementById("transaction-amount");
+let transactionCashBackRate = document.getElementById("transaction-cashBackRate");
+let transactionCreateButton = document.getElementById("transaction-create-button");
 
+//update user info
+let updateUserName = document.getElementById("user-name");
+let updateUserEmail = document.getElementById("user-email");
+let updateUserPassword = document.getElementById("user-password");
+let updateUserIncome = document.getElementById("user-income");
+let updateUserButton = document.getElementById("user-update-button");
 
 // logout
 let logoutButton = document.getElementById("logout");
@@ -22,12 +32,12 @@ getMe()
 function getMe(){
     axios.get("http://localhost:3001/me").then(
         data => {
-            console.log("data.data", data.data);
+            // console.log("data.data", data.data);
             const { fullName, income, transactions } = data.data.user;
 
             userName.innerText = fullName;
             userIncome.innerText = "$" + income;
-            console.log("transactions", transactions);
+            // console.log("transactions", transactions);
             let deposit = 0;
             let expense = 0;
             let cashBack = 0;
@@ -53,10 +63,66 @@ function calCashBack(price, cashbackRate){
 }
 
 
+function updateUser(fullName, email, password, income){
+    let data = {};
+
+    if(fullName !== ""){
+        data.fullName = fullName;
+    }
+    if(email !== ""){
+        data.email = email;
+    }
+    if(password !== ""){
+        data.password = password;
+    }
+    if(income !== ""){
+        data.income = income;
+    }
+
+    axios.put("http://localhost:3001/update", data)
+        .then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
+}
+
+function createTransaction(){
+    if(transactionItem.value === "" ||
+    transactionAmount.value === ""){
+        alert("Please fill required inputs");
+        return;
+    }
+
+    let data = {
+        title: transactionItem.value,
+        amount: transactionAmount.value,
+        cashbackRate: transactionCashBackRate.value
+    };
+
+    axios.post("http://localhost:3001/api/transaction/", data)
+        .then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
+}
+
+
+updateUserButton.addEventListener("click", () => {
+    updateUser(updateUserName.value, updateUserEmail.value, updateUserPassword.value, updateUserIncome.value);
+    window.location.reload();
+})
+
+
+
+transactionCreateButton.addEventListener("click", () => {
+    createTransaction();
+    window.location.reload();
+})
+
+
 logoutButton.addEventListener("click", () => {
-    // we will call logout endpoint
-    // then we will delete token from localstorage
-    // then we will redirect to login page
     axios.post("http://localhost:3001/api/auth/logout").then(
         data => {
             localStorage.removeItem("token");
