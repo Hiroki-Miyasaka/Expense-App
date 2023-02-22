@@ -107,11 +107,13 @@ function getHistory(){
 historyField.addEventListener("click", (event) => {
     console.log("event", event);
   if (event.target.id.startsWith("modify-")) {
-    const transactionId = event.target.id.split("-")[1];
+    const transactionId = event.target.id.split("-")[1].split("history")[0];
     // console.log("transactionId", transactionId);
     const nameInput = document.getElementById(`modify-${transactionId}Name`);
     const amountInput = document.getElementById(`modify-${transactionId}amount`);
     const cashBackRateInput = document.getElementById(`modify-${transactionId}cashBackRate`);
+
+    
     
     const name = nameInput.value;
     const amount = amountInput.value;
@@ -133,7 +135,7 @@ historyField.addEventListener("click", (event) => {
 // Event listener for delete history button
 historyField.addEventListener("click", (event) => {
     if (event.target.id.startsWith("delete-")) {
-      const transactionId = event.target.id.split("-")[1];
+      const transactionId = event.target.id.split("-")[1].split("history")[0];
       console.log("transactionId", transactionId);
       axios.delete(`http://localhost:3001/api/transaction/${transactionId}`).then(data => {
         console.log(data);

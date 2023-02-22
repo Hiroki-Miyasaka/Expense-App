@@ -111,32 +111,40 @@ export const updateTransaction = async (req, res) => {
 export const deleteTransaction = async (req, res) => {
     const userId = req.user;
     const { id } = req.params;
-    
 
-    try{
+    try {
         await Transaction.findByIdAndRemove(id).then(
-            (res) => {
-                User.findByIdAndUpdate(userId,
-                    {$pull: {transactions: res.id}}, {new: true}, (err, reply) => {
-                        if(err) console.log(err);
+            (transaction) => {
+                User.findByIdAndUpdate(
+                    userId,
+                    { $pull: { transactions: transaction.id } },
+                    { new: true },
+                    (err, reply) => {
+                        if (err) {
+                            console.log(err);
+                            return res.status(500).json({
+                                status: "fail",
+                                message: "Something went wrong!",
+                            });
+                        }
                         console.log(reply);
-                    })
+                        return res.status(200).json({
+                            status: "Success",
+                            message: "Transaction deleted successfully!",
+                        });
+                    }
+                );
             }
-
-        ).catch(err => {
-            res.status(404).json({
-                status:"fail",
-                err: err.message
-            })
+        ).catch((err) => {
+            return res.status(404).json({
+                status: "fail",
+                err: err.message,
+            });
         });
-        res.status(200).json({
-            status: "Success",
-            message: "Transaction deleted successfully!"
-        })
-    } catch(err) {
-        res.status(500).json({
+    } catch (err) {
+        return res.status(500).json({
             status: "fail",
-            message: "Something went wrong!"
-        })
+            message: "Something went wrong!",
+        });
     }
-}
+};
