@@ -27,6 +27,9 @@
                     </li>
                 </ul>
               </div>
+              <button type="button" id="logout" class="btn btn-primary me-5" data-bs-toggle="modal">
+                Logout
+              </button>
             </div>
         </nav>      
     </header>
@@ -36,88 +39,11 @@
             <h1 class="border-bottom border-dark border-3 pb-3">History</h1>
         </div>
 
-        <div class="container border-top border-bottom border-dark mb-3 pt-3 pb-3 d-flex gap-5 align-items-center">
-            <div class="d-flex gap-5 me-auto">
-                <h2 id="item-name">History</h2>
-                <h2 id="amount">200</h2>
-            </div>
-            <div>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary btn-lg me-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Modify History
-                </button>
+        <div id="history-field">
                 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modify History</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="modify-itemName" class="form-label">Item</label>
-                                <input type="text" class="form-control" id="modify-itemName" placeholder="ex. Book">
-                            </div>
-                            <div class="mb-3">
-                                <label for="modify-amount" class="form-label">Amount</label>
-                                <input type="email" class="form-control" id="modify-amount" placeholder="ex. 500">
-                            </div>
-                            <div class="mb-3">
-                                <label for="modify-cashBackRate" class="form-label">Cash Back Rate</label>
-                                <input type="password" class="form-control" id="modify-cashBackRate" placeholder="ex. 3(%)">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                        <button id="modify-history-button" type="button" class="btn btn-primary">Modify History</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                    Delete History
-                </button>
-                
-                <!-- Modal -->
-                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete History</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <h4>Are you sure to you want to delete?</h4>
-                        </div>
-                        <div class="modal-footer">
-                        <button id="delete-history-button" type="button" class="btn btn-primary px-4 me-4">Yes</button>
-                        <button type="button" class="btn btn-secondary px-3" data-bs-dismiss="modal">No</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
+    
         </div>
 
-
-        <!-- <div class="container border-top border-bottom border-dark mb-3 pt-3 pb-3 d-flex gap-5 align-items-center">
-            <div class="d-flex gap-5 me-auto">
-                <h2>History</h2>
-                <h2>200</h2>
-            </div>
-            <div>
-                <button type="button" class="btn btn-primary btn-lg">Modify history</button>
-                <button type="button" class="btn btn-secondary btn-lg">Delete history</button>
-            </div>
-        </div> -->
-
-        
-
-       
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.3/axios.min.js" integrity="sha512-wS6VWtjvRcylhyoArkahZUkzZFeKB7ch/MHukprGSh1XIidNvHG1rxPhyFnL73M0FC1YXPIXLRDAoOyRJNni/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

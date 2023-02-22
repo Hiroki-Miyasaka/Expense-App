@@ -26,12 +26,12 @@ export const updateInformation = async (req, res) => {
     const data = req.body;
     // console.log("lin27 data", data);
     
-    // if(data.email || data.password){
-    //     res.status(400).json({
-    //         status: "fail",
-    //         message: "You can't update your email and password"
-    //     })
-    // }
+    if(data.password){
+        res.status(400).json({
+            status: "fail",
+            message: "You can't update your email and password"
+        })
+    }
 
     try{
         let user = await User.findByIdAndUpdate({_id: id}, data, {new: true});

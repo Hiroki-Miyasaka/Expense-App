@@ -14,7 +14,7 @@ let transactionCreateButton = document.getElementById("transaction-create-button
 //update user info
 let updateUserName = document.getElementById("user-name");
 let updateUserEmail = document.getElementById("user-email");
-let updateUserPassword = document.getElementById("user-password");
+// let updateUserPassword = document.getElementById("user-password");
 let updateUserIncome = document.getElementById("user-income");
 let updateUserButton = document.getElementById("user-update-button");
 
@@ -63,7 +63,7 @@ function calCashBack(price, cashbackRate){
 }
 
 
-function updateUser(fullName, email, password, income){
+function updateUser(fullName, email, income){
     let data = {};
 
     if(fullName !== ""){
@@ -72,9 +72,9 @@ function updateUser(fullName, email, password, income){
     if(email !== ""){
         data.email = email;
     }
-    if(password !== ""){
-        data.password = password;
-    }
+    // if(password !== ""){
+    //     data.password = password;
+    // }
     if(income !== ""){
         data.income = income;
     }
@@ -110,7 +110,7 @@ function createTransaction(){
 
 
 updateUserButton.addEventListener("click", () => {
-    updateUser(updateUserName.value, updateUserEmail.value, updateUserPassword.value, updateUserIncome.value);
+    updateUser(updateUserName.value, updateUserEmail.value, updateUserIncome.value);
     window.location.reload();
 })
 
@@ -118,6 +118,7 @@ updateUserButton.addEventListener("click", () => {
 
 transactionCreateButton.addEventListener("click", () => {
     createTransaction();
+    getMe();
     window.location.reload();
 })
 
