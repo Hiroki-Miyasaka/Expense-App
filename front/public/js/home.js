@@ -52,7 +52,7 @@ function getMe(){
             })
             let balance = deposit - expense;
             userBalance.innerText = "$" + balance;
-            userCashBack.innerText = "$" + cashBack;
+            userCashBack.innerText = "$" + Math.floor(cashBack * 100) / 100;
             userExpense.innerText = "$" + expense;
         }
     )
