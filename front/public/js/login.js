@@ -5,9 +5,6 @@ let password = document.getElementById("password");
 form.addEventListener("submit", (e) => {
     e.preventDefault(); // prevent page reload
 
-    // let email = document.getElementById("email").value;
-    // let password = document.getElementById("password").value;
-
     let data = {
         email: email.value,
         password: password.value
