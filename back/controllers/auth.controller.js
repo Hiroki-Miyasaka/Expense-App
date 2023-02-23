@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
 import { createToken } from "../service/jwt.service.js";
-import redisClient from "../service/redis.service.js";
+// import redisClient from "../service/redis.service.js";
 
 
 export const login = async(req, res) => {
@@ -28,7 +28,7 @@ export const login = async(req, res) => {
 
         const token = createToken({id: user._id});
  
-        await redisClient.set(token.toString(), user._id.toString());
+        // await redisClient.set(token.toString(), user._id.toString());
 
         res.header("Authorization", token).status(200).json({
             status: "Success",
@@ -85,7 +85,7 @@ export const logout = async (req, res) => {
     const token = req.headers.authorization;
 
     try{
-        await redisClient.del(token.toString());
+        // await redisClient.del(token.toString());
 
         res.status(200).json({
             status: "Success",

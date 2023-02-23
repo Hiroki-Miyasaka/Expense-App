@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import redisClient from "./service/redis.service.js";
+// import redisClient from "./service/redis.service.js";
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 import transactionRoutes from "./routes/transaction.route.js";
@@ -13,14 +13,14 @@ import db from "./config/db.config.js";
 dotenv.config();
 const app = express();
 
-(async () => {
-    try{
-        await redisClient.connect();
-    }
-    catch(err){
-        console.log(err);
-    }
-})();
+// (async () => {
+//     try{
+//         // await redisClient.connect();
+//     }
+//     catch(err){
+//         console.log(err);
+//     }
+// })();
 
 
 app.use(cors());
