@@ -12,7 +12,7 @@ form.addEventListener("submit", (e) => {
 
     console.log(data);
 
-    axios.post("http://localhost:3001/api/auth/login", data)
+    axios.post("https://expense-app-uldl.onrender.com/api/auth/login", data)
     .then(res => {
         console.log("This is data", res);
         

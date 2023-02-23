@@ -18,7 +18,7 @@ form.addEventListener("submit", (e) => {
         password: password.value
     };
 
-    axios.post("http://localhost:3001/api/auth/register",data)
+    axios.post("https://expense-app-uldl.onrender.com/api/auth/register",data)
         .then(response => {
             console.log(response);
             window.location.href = "./login.html";

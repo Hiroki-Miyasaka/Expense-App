@@ -29,7 +29,7 @@ if(token){
 getMe()
 
 function getMe(){
-    axios.get("http://localhost:3001/me").then(
+    axios.get("https://expense-app-uldl.onrender.com/me").then(
         data => {
             const { fullName, income, transactions } = data.data.user;
 
@@ -74,7 +74,7 @@ function updateUser(fullName, email, income){
         data.income = income;
     }
 
-    axios.put("http://localhost:3001/update", data)
+    axios.put("https://expense-app-uldl.onrender.com/update", data)
         .then(res => {
             console.log(res);
         }).catch(err => {
@@ -95,7 +95,7 @@ function createTransaction(){
         cashbackRate: transactionCashBackRate.value
     };
 
-    axios.post("http://localhost:3001/api/transaction/", data)
+    axios.post("https://expense-app-uldl.onrender.com/api/transaction/", data)
         .then(res => {
             console.log(res);
         }).catch(err => {
@@ -119,7 +119,7 @@ transactionCreateButton.addEventListener("click", () => {
 
 
 logoutButton.addEventListener("click", () => {
-    axios.post("http://localhost:3001/api/auth/logout").then(
+    axios.post("https://expense-app-uldl.onrender.com/api/auth/logout").then(
         data => {
             localStorage.removeItem("token");
             window.location.href = "./login.html";

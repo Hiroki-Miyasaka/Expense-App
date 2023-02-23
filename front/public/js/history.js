@@ -19,7 +19,7 @@ getHistory();
 
 
 function getHistory(){
-    axios.get("http://localhost:3001/me").then(
+    axios.get("https://expense-app-uldl.onrender.com/me").then(
         data => {
             const { transactions } = data.data.user;
             
@@ -118,7 +118,7 @@ historyField.addEventListener("click", (event) => {
     const amount = amountInput.value;
     const cashBackRate = cashBackRateInput.value;
 
-    axios.put(`http://localhost:3001/api/transaction/${transactionId}`, {
+    axios.put(`https://expense-app-uldl.onrender.com/api/transaction/${transactionId}`, {
       title: name,
       amount: amount,
       cashBackRate: cashBackRate
@@ -136,7 +136,7 @@ historyField.addEventListener("click", (event) => {
     if (event.target.id.startsWith("delete-")) {
       const transactionId = event.target.id.split("-")[1].split("history")[0];
       console.log("transactionId", transactionId);
-      axios.delete(`http://localhost:3001/api/transaction/${transactionId}`).then(data => {
+      axios.delete(`https://expense-app-uldl.onrender.com/api/transaction/${transactionId}`).then(data => {
         console.log(data);
         window.location.reload();
       }).catch(err => {
@@ -150,7 +150,7 @@ historyField.addEventListener("click", (event) => {
 
 
 logoutButton.addEventListener("click", () => {
-    axios.post("http://localhost:3001/api/auth/logout").then(
+    axios.post("https://expense-app-uldl.onrender.com/api/auth/logout").then(
         data => {
             localStorage.removeItem("token");
             window.location.href = "./login.html";
