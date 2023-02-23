@@ -45,6 +45,7 @@ export const createTransaction = async (req, res) => {
 
         let createdTransaction = await Transaction.create(newTransaction);
 
+        // Another way to create
         // const savedTransaction = await newTransaction.save();
         // const updatedUser = await User.findOneAndUpdate(
         //     req.user,

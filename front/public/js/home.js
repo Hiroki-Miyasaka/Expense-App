@@ -14,7 +14,6 @@ let transactionCreateButton = document.getElementById("transaction-create-button
 //update user info
 let updateUserName = document.getElementById("user-name");
 let updateUserEmail = document.getElementById("user-email");
-// let updateUserPassword = document.getElementById("user-password");
 let updateUserIncome = document.getElementById("user-income");
 let updateUserButton = document.getElementById("user-update-button");
 
@@ -32,12 +31,11 @@ getMe()
 function getMe(){
     axios.get("http://localhost:3001/me").then(
         data => {
-            // console.log("data.data", data.data);
             const { fullName, income, transactions } = data.data.user;
 
             userName.innerText = fullName;
             userIncome.innerText = "$" + income;
-            // console.log("transactions", transactions);
+            
             let deposit = 0;
             let expense = 0;
             let cashBack = 0;
@@ -72,9 +70,6 @@ function updateUser(fullName, email, income){
     if(email !== ""){
         data.email = email;
     }
-    // if(password !== ""){
-    //     data.password = password;
-    // }
     if(income !== ""){
         data.income = income;
     }
