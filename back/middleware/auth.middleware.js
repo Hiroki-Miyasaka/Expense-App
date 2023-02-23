@@ -7,8 +7,6 @@ dotenv.config();
 const auth = async (req, res, next) => {
 
     const token = req.headers.authorization;
-    // console.log("here are here");
-    // console.log(token);
 
     const redisToken = await redisClient.get(token);
     

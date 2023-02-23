@@ -21,10 +21,8 @@ export const getMe = async (req, res) => {
 
 export const updateInformation = async (req, res) => {
     const id = req.user;
-    // console.log("lin24 data", id);
-
     const data = req.body;
-    // console.log("lin27 data", data);
+
     
     if(data.password){
         res.status(400).json({
